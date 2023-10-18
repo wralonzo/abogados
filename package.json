@@ -1,7 +1,7 @@
 {
-    "name": "sakai-ng",
+    "name": "abogados",
     "version": "16.0.0",
-    "license": "PrimeNG Commercial",
+    "license": "primeNg 16",
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
@@ -22,7 +22,7 @@
         "@angular/platform-browser-dynamic": "^16.1.0",
         "@angular/router": "^16.1.0",
         "@fullcalendar/angular": "^6.0.3",
-        "@fullcalendar/core": "^6.0.3",
+        "@fullcalendar/core": "^6.1.9",
         "@fullcalendar/daygrid": "^6.0.3",
         "@fullcalendar/interaction": "^6.0.3",
         "@fullcalendar/timegrid": "^6.0.3",
@@ -30,11 +30,11 @@
         "primeflex": "^3.3.1",
         "primeicons": "6.0.1",
         "primeng": "16.0.2",
+        "prismjs": "^1.29.0",
         "quill": "^1.3.7",
         "rxjs": "~7.8.0",
         "tslib": "^2.3.0",
-        "zone.js": "~0.13.0",
-        "prismjs": "^1.29.0"
+        "zone.js": "~0.13.0"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "^16.1.5",

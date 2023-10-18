@@ -4,11 +4,11 @@
 			<div class="">
 				<table width="100%">
 					<tr>
-						<th  align="center"><h5>Clientes</h5>
+						<th  align="center"><h5>Casos</h5>
 						</th>
 						<th align="right">
-							<button pButton label="Nuevo cliente" class="p-button-outlined p-input-icon-left mb-2" icon="pi pi-filter-slash" [routerLink]="['/home/cliente/create']"></button>
-							</th>
+							<button pButton label="Nuevo caso" class="p-button-outlined p-input-icon-left mb-2" icon="pi pi-filter-slash" [routerLink]="['/home/caso/create']"></button>
+						</th>
 					</tr>
 				</table>
 			</div>
@@ -18,7 +18,7 @@
 						<button pButton label="Limpiar filtro" class="p-button-outlined mb-2" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
 						<span class="p-input-icon-left mb-2">
 							<i class="pi pi-search"></i>
-							<input pInputText type="text" #filter (input)="onGlobalFilter(dt1, $event)" placeholder="Buscar" class="w-full"/>
+							<input pInputText type="text" #filter (input)="onGlobalFilter(dt1, $event)" placeholder="Search Keyword" class="w-full"/>
 						</span>
 					</div>
 				</ng-template>
@@ -30,6 +30,22 @@
 								<p-columnFilter type="text" field="name" display="menu" placeholder="Search by name"></p-columnFilter>
 							</div>
 						</th>
+
+						<th style="min-width: 12rem" align="center">
+							<div class="flex justify-content-between align-items-center">
+								Costo
+								<p-columnFilter type="text" field="name" display="menu" placeholder="Search by name"></p-columnFilter>
+							</div>
+						</th>
+
+						<th style="min-width: 12rem" align="center">
+							<div class="flex justify-content-between align-items-center">
+								Abogado
+								<p-columnFilter type="text" field="name" display="menu" placeholder="Search by name"></p-columnFilter>
+							</div>
+						</th>
+
+
 						<th style="min-width: 12rem" align="center">
 							<div class="flex justify-content-between align-items-center">
 								Estado
@@ -72,13 +88,22 @@
 							{{customer.name}}
 						</td>
 						<td>
+							$20.00
+						</td>
+
+						<td>
+							{{customer.name}}
+						</td>
+
+						<td>
+							<p>Finalizado</p>
 							<span [class]="'customer-badge status-' + customer.status">{{customer.status}}</span>
 						</td>
 						<td>
 							<p-progressBar [value]="customer.activity" [showValue]="false" [style]="{'height': '0.5rem'}"></p-progressBar>
 						</td>
 						<td class="text-center">
-							<i class="pi" [ngClass]="{'true-icon pi-check-circle text-green-500': customer.verified, 'false-icon pi-times-circle text-pink-500': !customer.verified}"></i>
+							<button pButton label="Ver caso" class="p-button-outlined p-input-icon-left mb-2"  (click)="clear(dt1)"></button>
 						</td>
 					</tr>
 				</ng-template>

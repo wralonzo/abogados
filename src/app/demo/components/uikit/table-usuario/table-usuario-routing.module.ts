@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FileComponent } from './filedemo.component';
+import { TableUserComponent } from './table-usuario.component';
 
 @NgModule({
 	imports: [RouterModule.forChild([
-		{ path: '', component: FileComponent }
+		{ path: '', component: TableUserComponent }
 	])],
 	exports: [RouterModule]
 })
-export class FileDemoRoutingModule { }
+export class TableDemoRoutingModule { }

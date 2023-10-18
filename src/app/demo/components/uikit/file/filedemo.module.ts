@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FileUploadModule } from 'primeng/fileupload';
 import { FileDemoRoutingModule } from './filedemo-routing.module';
-import { FileDemoComponent } from './filedemo.component';
+import { FileComponent } from './filedemo.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 
 @NgModule({
@@ -13,6 +14,6 @@ import { FileDemoComponent } from './filedemo.component';
 		FileDemoRoutingModule,
 		FileUploadModule
 	],
-	declarations: [FileDemoComponent],
+	declarations: [FileComponent],
 })
 export class FileDemoModule { }
