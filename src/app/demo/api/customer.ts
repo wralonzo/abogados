@@ -18,3 +18,10 @@ export interface Customer {
     activity?: number;
     representative?: Representative;
 }
+
+export interface Caso{
+    id_caso: number;
+    nombre: string;
+    id_cliente: number;
+    id_abogado: number;
+}
