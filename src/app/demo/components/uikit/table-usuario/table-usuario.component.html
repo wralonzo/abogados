@@ -1,109 +1,204 @@
 <div class="grid">
-	<div class="col-12">
-		<div class="card">
-			<div class="">
-				<table width="100%">
-					<tr>
-						<th  align="center"><h5>Usuarios</h5>
-						</th>
-						<th align="right">
-							<button pButton label="Nuevo usuario" class="p-button-outlined p-input-icon-left mb-2" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
-							</th>
-					</tr>
-				</table>
-			</div>
-			<p-table #dt1 [value]="customers1" dataKey="id" [rows]="10" [loading]="loading" [rowHover]="true" styleClass="p-datatable-gridlines" [paginator]="true" [globalFilterFields]="['name','country.name','representative.name','status']" responsiveLayout="scroll">
-				<ng-template pTemplate="caption">
-					<div class="flex justify-content-between flex-column sm:flex-row">
-						<button pButton label="Limpiar filtro" class="p-button-outlined mb-2" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
-						<span class="p-input-icon-left mb-2">
-							<i class="pi pi-search"></i>
-							<input pInputText type="text" #filter (input)="onGlobalFilter(dt1, $event)" placeholder="Search Keyword" class="w-full"/>
-						</span>
-					</div>
-				</ng-template>
-				<ng-template pTemplate="header">
-					<tr>
-						<th style="min-width: 12rem" align="center">
-							<div class="flex justify-content-between align-items-center">
-								Nombres
-								<p-columnFilter type="text" field="name" display="menu" placeholder="Search by name"></p-columnFilter>
-							</div>
-						</th>
+    <div class="col-12">
+        <div class="card">
+            <div class="">
+                <table width="100%">
+                    <tr>
+                        <th align="center"><h5>Usuarios</h5></th>
+                        <th align="right">
+                            <button
+                                pButton
+                                label="Nuevo usuario"
+                                class="p-button-outlined p-input-icon-left mb-2"
+                                icon="pi pi-filter-slash"
+                                (click)="clear(dt1)"
+                            ></button>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <p-table
+                #dt1
+                [value]="customers1"
+                dataKey="id"
+                [rows]="10"
+                [loading]="loading"
+                [rowHover]="true"
+                styleClass="p-datatable-gridlines"
+                [paginator]="true"
+                [globalFilterFields]="[
+                    'name',
+                    'country.name',
+                    'representative.name',
+                    'status'
+                ]"
+                responsiveLayout="scroll"
+            >
+                <ng-template pTemplate="caption">
+                    <div
+                        class="flex justify-content-between flex-column sm:flex-row"
+                    >
+                        <button
+                            pButton
+                            label="Limpiar filtro"
+                            class="p-button-outlined mb-2"
+                            icon="pi pi-filter-slash"
+                            (click)="clear(dt1)"
+                        ></button>
+                        <span class="p-input-icon-left mb-2">
+                            <i class="pi pi-search"></i>
+                            <input
+                                pInputText
+                                type="text"
+                                #filter
+                                (input)="onGlobalFilter(dt1, $event)"
+                                placeholder="Search Keyword"
+                                class="w-full"
+                            />
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="min-width: 12rem" align="center">
+                            <div
+                                class="flex justify-content-between align-items-center"
+                            >
+                                Nombres
+                                <p-columnFilter
+                                    type="text"
+                                    field="name"
+                                    display="menu"
+                                    placeholder="Search by name"
+                                ></p-columnFilter>
+                            </div>
+                        </th>
 
-						<th style="min-width: 12rem" align="center">
-							<div class="flex justify-content-between align-items-center">
-								Correo
-								<p-columnFilter type="text" field="name" display="menu" placeholder="Search by name"></p-columnFilter>
-							</div>
-						</th>
+                        <th style="min-width: 12rem" align="center">
+                            <div
+                                class="flex justify-content-between align-items-center"
+                            >
+                                Correo
+                                <p-columnFilter
+                                    type="text"
+                                    field="name"
+                                    display="menu"
+                                    placeholder="Search by name"
+                                ></p-columnFilter>
+                            </div>
+                        </th>
 
-						<th style="min-width: 12rem" align="center">
-							<div class="flex justify-content-between align-items-center">
-								Usuario
-								<p-columnFilter type="text" field="name" display="menu" placeholder="Search by name"></p-columnFilter>
-							</div>
-						</th>
+                        <th style="min-width: 12rem" align="center">
+                            <div
+                                class="flex justify-content-between align-items-center"
+                            >
+                                Usuario
+                                <p-columnFilter
+                                    type="text"
+                                    field="name"
+                                    display="menu"
+                                    placeholder="Search by name"
+                                ></p-columnFilter>
+                            </div>
+                        </th>
 
+                        <th style="min-width: 12rem" align="center">
+                            <div
+                                class="flex justify-content-between align-items-center"
+                            >
+                                Estado
+                                <p-columnFilter
+                                    field="status"
+                                    matchMode="equals"
+                                    display="menu"
+                                >
+                                    <ng-template
+                                        pTemplate="filter"
+                                        let-value
+                                        let-filter="filterCallback"
+                                    >
+                                        <p-dropdown
+                                            [ngModel]="value"
+                                            [options]="statuses"
+                                            (onChange)="filter($event.value)"
+                                            placeholder="Any"
+                                            [style]="{ 'min-width': '12rem' }"
+                                        >
+                                            <ng-template
+                                                let-option
+                                                pTemplate="item"
+                                            >
+                                                <span
+                                                    [class]="
+                                                        'customer-badge status-' +
+                                                        option.value
+                                                    "
+                                                    >{{ option.label }}</span
+                                                >
+                                            </ng-template>
+                                        </p-dropdown>
+                                    </ng-template>
+                                </p-columnFilter>
+                            </div>
+                        </th>
 
-						<th style="min-width: 12rem" align="center">
-							<div class="flex justify-content-between align-items-center">
-								Estado
-								<p-columnFilter field="status" matchMode="equals" display="menu">
-									<ng-template pTemplate="filter" let-value let-filter="filterCallback">
-										<p-dropdown [ngModel]="value" [options]="statuses" (onChange)="filter($event.value)" placeholder="Any" [style]="{'min-width': '12rem'}" >
-											<ng-template let-option pTemplate="item">
-												<span [class]="'customer-badge status-' + option.value">{{option.label}}</span>
-											</ng-template>
-										</p-dropdown>
-									</ng-template>
-								</p-columnFilter>
-							</div>
-						</th>
-						
-						<th style="min-width: 8rem">
-							<div class="flex justify-content-between align-items-center">
-								Acciones
-								<p-columnFilter type="boolean" field="verified" display="menu"></p-columnFilter>
-							</div>
-						</th>
-					</tr>
-				</ng-template>
-				<ng-template pTemplate="body" let-customer>
-					<tr>
-						<td>
-							{{customer.name}}
-						</td>
-						<td>
-							{{customer.name}}
-						</td>
-						<td>
-							{{customer.name}}
-						</td>
-						<td>
-							{{customer.name}}
-						</td>
-						<td>
-							<span [class]="'customer-badge status-' + customer.status">{{customer.status}}</span>
-						</td>
-						
-						<td class="text-center">
-							<i class="pi" [ngClass]="{'true-icon pi-check-circle text-green-500': customer.verified, 'false-icon pi-times-circle text-pink-500': !customer.verified}"></i>
-						</td>
-					</tr>
-				</ng-template>
-				<ng-template pTemplate="emptymessage">
-					<tr>
-						<td colspan="8">No customers found.</td>
-					</tr>
-				</ng-template>
-				<ng-template pTemplate="loadingbody">
-					<tr>
-						<td colspan="8">Loading customers data. Please wait.</td>
-					</tr>
-				</ng-template>
-    		</p-table>
-		</div>
+                        <th style="min-width: 8rem">
+                            <div
+                                class="flex justify-content-between align-items-center"
+                            >
+                                Acciones
+                                <p-columnFilter
+                                    type="boolean"
+                                    field="verified"
+                                    display="menu"
+                                ></p-columnFilter>
+                            </div>
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-customer>
+                    <tr>
+                        <td>
+                            {{ customer.name }}
+                        </td>
+                        <td>
+                            {{ customer.name }}
+                        </td>
+                        <td>
+                            {{ customer.name }}
+                        </td>
+                        <td>
+                            {{ customer.name }}
+                        </td>
 
-	</div>
+                        <td class="text-center">
+                            <a href="#">
+                                <i
+                                    class="pi"
+                                    [ngClass]="{
+                                        'true-icon pi-check-circle text-green-500':
+                                            customer.verified,
+                                        'false-icon pi-times-circle text-pink-500':
+                                            !customer.verified
+                                    }"
+                                ></i>
+                            </a>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                        <td colspan="8">No customers found.</td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="loadingbody">
+                    <tr>
+                        <td colspan="8">
+                            Loading customers data. Please wait.
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
 </div>
